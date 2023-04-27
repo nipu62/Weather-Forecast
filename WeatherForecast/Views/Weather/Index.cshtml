@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Weather Forecast";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Weather Forecast and Conditions</h1>
+    <br />
+    <label for="usr" style="margin-bottom: 20px;">Provide City Name or Zip Code</label>
+    <br />
+    <input type="text" class="form-control" id="usr" text-center>
+    <br />
+    <input type="button" class="btn btn-info" id="WeatherSearch" value="Search" />
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#WeatherSearch").click(function () {
+                var txtVal = $("#usr").val();
+                if (txtVal != "") {
+                    var url = "@Url.Action("SearchData","Weather")" + "/" + txtVal;
+                    window.location.href = url;
+                } else {
+                    alert("Please enter a location.");
+                }
+            });
+        });
+    </script>
+}
+
+

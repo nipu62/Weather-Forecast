@@ -1,0 +1,149 @@
+﻿@model WeatherData
+@{
+    Layout = "_Layout"; ViewBag.Title = "Weather Forecast";
+}
+
+<head>
+    <style>
+        h2 {text-align: center; color: cornflowerblue}
+        /* styles for even rows */
+        tr:nth-child(even) {
+            background-color: azure;
+        }
+        /* styles for odd rows */
+        tr:nth-child(odd) {
+            background-color: aliceblue;
+        }
+        td {
+            text-align: center
+        }
+
+        th {
+            text-align: center
+        }
+    </style>
+</head>
+
+@try
+{
+    @*<script>alert("inside weather data");</script>*@
+    <br />
+    <h2> 14 days weather forecast for Reno, NV</h2>
+    
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Max Temp.</th>
+                <th>Min Temp.</th>
+                <th>Avg. Humidity</th>
+                <th>Total Precipitation</th>
+                <th>UV Index</th>
+                <th>Condition</th>
+                <th>Sunrise</th>
+                <th>Sunset</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in ViewBag.RenoWeather.ForecastWeather.ForecastDay)
+            {
+                <tr>
+                    <td>@day.Date</td>
+                    <td>@day.Day.MaxtempF °F</td>
+                    <td>@day.Day.MintempF °F</td>
+                    <td>@day.Day.AvgHumidity %</td>
+                    <td>@day.Day.TotalprecipMm mm</td>
+                    <td>@day.Day.UV</td>
+                    <td>
+                        <img width="40" height="40" src=@day.Day.Condition.Icon alt="image">
+                        <span> @day.Day.Condition.Text</span>
+                    </td>
+                    <td>@day.Astro.Sunrise</td>
+                    <td>@day.Astro.Sunset</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br />
+    <h2> 14 days weather forecast for Austin, TX</h2>
+   
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Max Temp.</th>
+                <th>Min Temp.</th>
+                <th>Avg. Humidity</th>
+                <th>Total Precipitation</th>
+                <th>UV Index</th>
+                <th>Condition</th>
+                <th>Sunrise</th>
+                <th>Sunset</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in ViewBag.AustinWeather.ForecastWeather.ForecastDay)
+            {
+                <tr>
+                    <td>@day.Date</td>
+                    <td>@day.Day.MaxtempF °F</td>
+                    <td>@day.Day.MintempF °F</td>
+                    <td>@day.Day.AvgHumidity %</td>
+                    <td>@day.Day.TotalprecipMm mm</td>
+                    <td>@day.Day.UV</td>
+                    <td>
+                        <img width="40" height="40" src=@day.Day.Condition.Icon alt="image">
+                        <span> @day.Day.Condition.Text</span>
+                    </td>
+                    <td>@day.Astro.Sunrise</td>
+                    <td>@day.Astro.Sunset</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    <br/>
+    <h2> 14 days weather forecast for Tampa, FL</h2>
+
+    <table class="table table-sm table-striped table-bordered m-2">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Max Temp.</th>
+                <th>Min Temp.</th>
+                <th>Avg. Humidity</th>
+                <th>Total Precipitation</th>
+                <th>UV Index</th>
+                <th>Condition</th>
+                <th>Sunrise</th>
+                <th>Sunset</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in ViewBag.TampaWeather.ForecastWeather.ForecastDay)
+            {
+                <tr>
+                    <td>@day.Date</td>
+                    <td>@day.Day.MaxtempF °F</td>
+                    <td>@day.Day.MintempF °F</td>
+                    <td>@day.Day.AvgHumidity %</td>
+                    <td>@day.Day.TotalprecipMm mm</td>
+                    <td>@day.Day.UV</td>
+                    <td>
+                        <img width="40" height="40" src=@day.Day.Condition.Icon alt="image">
+                        <span> @day.Day.Condition.Text</span>
+                    </td>
+                    <td>@day.Astro.Sunrise</td>
+                    <td>@day.Astro.Sunset</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br/>
+}
+catch
+{
+    <h1>No data found!</h1>
+}
